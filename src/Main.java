@@ -21,22 +21,25 @@ public class Main {
         String columnName, targetValue, oldName, newName, titleName;
 
         while(choice != 6){
-            System.out.println("\t~1. Add manga\n" +
+            System.out.println("\t~1.Add manga\n" +
                 "\t~2.Delete manga\n" +
                 "\t~3.Update data\n" +
                 "\t~4.Read all data\n" +
                 "\t~5.Search\n" +
                 "\t~6.Stop\n");
             choice = scanner.nextInt();
+            scanner.useDelimiter("\n");
             switch (choice) {
                 case 1:
                     Manga manga = mangaCreate();
                     db.insertRow(connection, "Manga", manga);
                     break;
                 case 2:
+                    System.out.println("Test 1 " + choice);
                     System.out.println("Enter the name of the title: ");
                     titleName = scanner.next();
                     db.deleteByTitle(connection, "manga", titleName);
+                    System.out.println("Test 2 " + titleName);
                     break;
                 case 3:
                     System.out.println("The name of the column: ");
